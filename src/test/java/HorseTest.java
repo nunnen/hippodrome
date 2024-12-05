@@ -53,10 +53,19 @@ class HorseTest {
     }
 
     @Test
-    void getDistance() {
+    void getDistanceReturnsValue() {
     }
 
     @Test
-    void move() {
+    void getDistanceReturnsZeroIfNoDistanceInConstructor() {
+    }
+
+    @Test
+    void moveVerifyGetRandomDoubleUsed() {
+    }
+
+    @Test
+    void moveReturnsCorrectValue() {
+
     }
 }
