@@ -4,6 +4,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -13,6 +14,7 @@ class HippodromeTest {
 
     @BeforeEach
     void setUp() {
+        Hippodrome mockedHippodrome = Mockito.mock(Hippodrome.class);
     }
 
     @Test
@@ -39,19 +41,29 @@ class HippodromeTest {
         assertIterableEquals(expected, testHippodrome.getHorses());
     }
 
-//    @Test
-//    void move() {
-//        List<Horse> horseList = new ArrayList<>();
-//        for (int i = 0; i < 50; i++) {
-//            horseList.add(Mockito.mock(Horse.class));
-//        }
-//        testHippodrome = new Hippodrome(horseList);
-//        testHippodrome.move();
-//        testHippodrome.getHorses().forEach(x -> Mockito.verify(x).move());
-//    }
-//
+    @Test
+    void move() {
+        List<Horse> horseList = new ArrayList<>();
+        for (int i = 0; i < 50; i++) {
+            horseList.add(Mockito.mock(Horse.class));
+        }
+        testHippodrome = new Hippodrome(horseList);
+        testHippodrome.move();
+        testHippodrome.getHorses().forEach(x -> Mockito.verify(x).move());
+    }
+
 
     @Test
     void getWinner() {
+        List<Horse> horseList = new ArrayList<>();
+        for (int i = 0; i < 30; i++) {
+            horseList.add(new Horse("TestHorse " + i, i));
+        }
+        testHippodrome = new Hippodrome(horseList);
+
+        Horse expected = testHippodrome.getHorses().stream()
+                .max(Comparator.comparing(Horse::getDistance))
+                .get();
+        assertEquals(expected, testHippodrome.getWinner());
     }
 }
