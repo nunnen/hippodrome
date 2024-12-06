@@ -1,7 +1,9 @@
 import java.util.List;
 import java.util.concurrent.TimeUnit;
+import org.apache.logging.log4j.*;
 
 public class Main {
+
 
     public static void main(String[] args) throws Exception {
         List<Horse> horses = List.of(
