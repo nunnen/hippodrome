@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 import org.apache.logging.log4j.*;
@@ -15,6 +16,7 @@ public class Main {
                 new Horse("Pegasus", 2.9),
                 new Horse("Cherry", 3)
         );
+
         Hippodrome hippodrome = new Hippodrome(horses);
 
         logger.info("Начало скачек. Количество участников: 7");
