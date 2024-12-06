@@ -3,7 +3,7 @@ import java.util.concurrent.TimeUnit;
 import org.apache.logging.log4j.*;
 
 public class Main {
-
+    private static final Logger logger = LogManager.getLogger(Main.class);
 
     public static void main(String[] args) throws Exception {
         List<Horse> horses = List.of(
@@ -17,6 +17,7 @@ public class Main {
         );
         Hippodrome hippodrome = new Hippodrome(horses);
 
+        logger.info("Начало скачек. Количество участников: 7");
         for (int i = 0; i < 100; i++) {
             hippodrome.move();
             watch(hippodrome);
@@ -24,6 +25,7 @@ public class Main {
         }
 
         String winnerName = hippodrome.getWinner().getName();
+        logger.info("Окончание скачек. Победитель: {}", winnerName);
         System.out.println(winnerName + " wins!");
     }
 
